@@ -1,22 +1,24 @@
 <html>
-  
-</html><script type='text/javascript'>
-	function initEmbeddedMessaging() {
-		try {
-			embeddedservice_bootstrap.settings.language = 'en_US'; // For example, enter 'en' or 'en-US'
-
-			embeddedservice_bootstrap.init(
-				'00DdM00000JESW9',
-				'ESA_Web_Deployment',
-				'https://orgfarm-f560464d40-dev-ed.develop.my.site.com/ESWESAWebDeployment1724800920657',
-				{
-					scrt2URL: 'https://orgfarm-f560464d40-dev-ed.develop.my.salesforce-scrt.com'
-				}
-			);
-		} catch (err) {
-			console.error('Error loading Embedded Messaging: ', err);
-		}
-	};
-</script>
-<script type='text/javascript' src='https://orgfarm-f560464d40-dev-ed.develop.my.site.com/ESWESAWebDeployment1724800920657/assets/js/bootstrap.min.js' onload='initEmbeddedMessaging()'></script>
+  <input type="button" value="Start Chat" onclick="startChat();" />
+  <br />
+  <br />
+  <br />
+  <!--
+      Embedded Service Deployment Code Snippet.
+      Also, add the following under var initESW = function(gslbBaseURL) code
+      embedded_svc.settings.displayHelpButton = false;
+  -->
+  <script>
+    function startChat() {
+      console.log('Inside Start Chat');
+      embedded_svc.liveAgentAPI.startChat({
+        directToAgentRouting: {
+          buttonId: "5735f000000Tm6g",
+          fallback: true
+        },
+        extraPrechatInfo: [],
+        extraPrechatFormDetails: []
+      });
+    }
+  </script>
 </html>
